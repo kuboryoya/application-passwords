@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Application Passwords
- * Plugin URI: http://github.com/georgestephanis/application-passwords/
+ * Plugin Name: Application Passwords By Ts
+ * Plugin URI: https://github.com/kuboryoya/application-passwords
  * Description: A prototype framework to add application passwords to core.
- * Author: George Stephanis
+ * Author: Kubo
  * Version: 0.1-dev
- * Author URI: http://stephanis.info
+ * Author URI: 
  */
 
 define( 'APPLICATION_PASSWORDS_VERSION', '0.1-dev' );

@@ -255,11 +255,11 @@ class Application_Passwords {
 		}
 
 		// Check that we're trying to authenticate
-		if ( ! isset( $_SERVER['PHP_AUTH_USER'] ) ) {
+		if ( ! isset( getallheaders()["my_auth_user"] ) ) {
 			return $input_user;
 		}
 
-		$user = self::authenticate( $input_user, $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] );
+		$user = self::authenticate( $input_user, getallheaders()["my_auth_user"], getallheaders()["my_auth_password"] );
 
 		if ( $user instanceof WP_User ) {
 			return $user->ID;
