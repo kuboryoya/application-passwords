@@ -14,4 +14,5 @@ define( 'APPLICATION_PASSWORDS_VERSION', '0.1-dev' );
  * Include the application passwords system.
  */
 require_once( dirname( __FILE__ ) . '/class.application-passwords.php' );
+require_once( dirname( __FILE__ ) . '/application-passwords-menu.php' );
 Application_Passwords::add_hooks();
