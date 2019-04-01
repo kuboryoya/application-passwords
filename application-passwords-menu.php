@@ -11,11 +11,7 @@ function add_general_custom_fields() {
     );
     register_setting(
           'apbts_header', // option_group
-          'apbts_header_user' // option_name
-    );
-     register_setting(
-      'apbts_header', // option_group
-      'apbts_header_password' // option_name
+          'apbts_header_token' // option_name
     );
 }
  
@@ -38,13 +34,7 @@ function display_apbts_menu_page() {
     <tr>
       <th scope="row">ユーザーのカスタムヘッダー名</th>
       <td>
-        <input style='width:300px;' type="text" name="apbts_header_user" value="<?php echo( get_option('apbts_header_user') ); ?>">
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">パスワードのカスタムヘッダー名</th>
-      <td>
-        <input style='width:300px;' type="text" name="apbts_header_password" value="<?php echo( get_option('apbts_header_password') ); ?>">
+        <input style='width:300px;' type="text" name="apbts_header_token" value="<?php echo( get_option('apbts_header_token') ); ?>">
       </td>
     </tr>
   </tbody>

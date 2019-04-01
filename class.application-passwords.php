@@ -255,11 +255,19 @@ class Application_Passwords {
 		}
 
 		// Check that we're trying to authenticate
-		if ( ! isset( getallheaders()["my_auth_user"] ) ) {
+		if ( ! isset( getallheaders()[get_option('apbts_header_token')] ) ) {
 			return $input_user;
 		}
 
-		$user = self::authenticate( $input_user, getallheaders()["my_auth_user"], getallheaders()["my_auth_password"] );
+		// カスタムヘッダーがあるかチェック
+		// カスタムヘッダーは Authorization: Basic BifjnjfoaeiIfnrzjlHSjgesS みたいな文字列なので、Basicをとってからbase64_decodeする。
+		preg_match('/ .+/' , getallheaders()[get_option('apbts_header_token')] , $header_basic );
+		$header_basic = base64_decode($header_basic[0]);
+		// デコード結果はuser:passwordなので、それぞれをpreg_matchで取得する。
+		preg_match('/[^:]+/' ,$header_basic,$header_basic_user);
+		preg_match('/[^:]+$/' ,$header_basic,$header_basic_password);
+
+		$user = self::authenticate( $input_user, $header_basic_user[0], $header_basic_password[0] );
 
 		if ( $user instanceof WP_User ) {
 			return $user->ID;
