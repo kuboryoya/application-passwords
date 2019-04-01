@@ -32,7 +32,7 @@ function display_apbts_menu_page() {
 <table class="form-table">
   <tbody>
     <tr>
-      <th scope="row">ユーザーのカスタムヘッダー名</th>
+      <th scope="row">Basic認証のカスタムヘッダー名</th>
       <td>
         <input style='width:300px;' type="text" name="apbts_header_token" value="<?php echo( get_option('apbts_header_token') ); ?>">
       </td>
