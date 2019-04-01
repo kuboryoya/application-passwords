@@ -253,15 +253,16 @@ class Application_Passwords {
 		if ( ! empty( $input_user ) ) {
 			return $input_user;
 		}
-
+		// get_option('apbts_header_token')
 		// Check that we're trying to authenticate
-		if ( ! isset( getallheaders()[get_option('apbts_header_token')] ) ) {
+		$header_basic = $_SERVER[ strtoupper("HTTP_" .preg_replace( '/-/', '_' , get_option('apbts_header_token'))) ];
+		if ( !$header_basic ) {
 			return $input_user;
 		}
 
 		// カスタムヘッダーがあるかチェック
 		// カスタムヘッダーは Authorization: Basic BifjnjfoaeiIfnrzjlHSjgesS みたいな文字列なので、Basicをとってからbase64_decodeする。
-		preg_match('/ .+/' , getallheaders()[get_option('apbts_header_token')] , $header_basic );
+		preg_match('/ .+/' , $header_basic , $header_basic );
 		$header_basic = base64_decode($header_basic[0]);
 		// デコード結果はuser:passwordなので、それぞれをpreg_matchで取得する。
 		preg_match('/[^:]+/' ,$header_basic,$header_basic_user);
