@@ -1,6 +1,7 @@
 
 このプラグインは、REST APIの認証にカスタムヘッダーによる認証を可能にするプラグインです。
 application password プラグインと同様に、ユーザーに紐づいたApplication Passwordを生成し、Basic認証を行います。
+Authorization ヘッダーが使用できない時、このプラグインを使用してください。
 
 ## 設定方法
 
